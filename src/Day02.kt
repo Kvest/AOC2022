@@ -31,7 +31,7 @@ private val SCORES = mapOf(
 )
 
 private fun String.toScore(): Int {
-    return SCORES["${this[0]}${this[2]}"] ?: throw IllegalStateException("Unknown ${this[0]}${this[2]}")
+    return SCORES.getValue("${this[0]}${this[2]}")
 }
 
 private val CORRECTIONS = mapOf(
@@ -47,5 +47,5 @@ private val CORRECTIONS = mapOf(
 )
 
 private fun String.correctMove(): String {
-    return CORRECTIONS["${this[0]}${this[2]}"] ?: throw IllegalStateException("Unknown ${this[0]}${this[2]}")
+    return CORRECTIONS.getValue("${this[0]}${this[2]}")
 }
