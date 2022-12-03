@@ -9,11 +9,11 @@ fun main() {
     println(part2(input))
 }
 
-fun part1(input: List<String>): Int {
+private fun part1(input: List<String>): Int {
     return input.toCalories().maxOrNull() ?: 0
 }
 
-fun part2(input: List<String>): Int {
+private fun part2(input: List<String>): Int {
     return input
         .toCalories()
         .sorted()
