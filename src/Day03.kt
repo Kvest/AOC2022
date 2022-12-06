@@ -29,7 +29,7 @@ private fun calculatePriority(row: String): Int {
         }
     }
 
-    error("No found")
+    error("Not found")
 }
 
 private fun commonPriority(first: String, second: String, third: String): Int {
@@ -42,7 +42,7 @@ private fun commonPriority(first: String, second: String, third: String): Int {
         }
     }
 
-    error("No found")
+    error("Not found")
 }
 
 private fun Char.toPriority(): Int {
