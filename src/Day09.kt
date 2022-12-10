@@ -13,12 +13,12 @@ fun main() {
     println(part2(input))
 }
 
-private fun part1(input: List<String>): Int = solve(input, 2)
-private fun part2(input: List<String>): Int = solve(input, 10)
+private fun part1(input: List<String>): Int = solve(input, ropeSize = 2)
+private fun part2(input: List<String>): Int = solve(input, ropeSize = 10)
 
 private fun solve(input: List<String>, ropeSize: Int): Int {
     val rope = List(ropeSize) { MutableXY(0, 0) }
-    val adjacentNodes = rope.windowed(2, 1)
+    val adjacentKnots = rope.windowed(2, 1)
     val head = rope.first()
     val tail = rope.last()
     val visitedCells = mutableSetOf<XY>()
@@ -50,8 +50,8 @@ private fun solve(input: List<String>, ropeSize: Int): Int {
             head.x += dx
             head.y += dy
 
-            adjacentNodes.forEach { (first, second) ->
-                adjustNodes(first, second)
+            adjacentKnots.forEach { (first, second) ->
+                adjustKnotes(first, second)
             }
 
             visitedCells.add(tail.toXY())
@@ -61,7 +61,7 @@ private fun solve(input: List<String>, ropeSize: Int): Int {
     return visitedCells.size
 }
 
-private fun adjustNodes(first: MutableXY, second: MutableXY) {
+private fun adjustKnotes(first: MutableXY, second: MutableXY) {
     if (abs(first.x - second.x) >= 2 || abs(first.y - second.y) >= 2) {
         second.x = second.x + 1 * (first.x - second.x).sign
         second.y = second.y + 1 * (first.y - second.y).sign
