@@ -23,3 +23,8 @@ data class XY(val x: Int, val y: Int)
 data class MutableXY(var x: Int, var y: Int) {
     fun toXY() = XY(x = x, y = y)
 }
+
+data class IJ(val i: Int, val j: Int)
+data class MutableIJ(var i: Int, var j: Int) {
+    fun toIJ() = IJ(i = i, j = j)
+}
