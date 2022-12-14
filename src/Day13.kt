@@ -12,11 +12,7 @@ private fun part1(input: List<String>): Int {
     return input.windowed(size = 2, step = 3)
         .map { list -> list.map { it.parseList() } }
         .mapIndexed { index, (first, second) ->
-            if (checkOrder(first.values, second.values) == Order.RIGHT) {
-                index + 1
-            } else {
-                0
-            }
+            if (checkOrder(first.values, second.values) == Order.RIGHT) index + 1 else 0
         }
         .sum()
 }
@@ -34,7 +30,7 @@ private fun part2(input: List<String>): Int {
     return (originalPackets + dividerPackets)
         .sortedWith(ListValueComparator)
         .mapIndexed { index, listValue ->
-            if (listValue in dividerPackets) (index + 1) else 1
+            if (listValue in dividerPackets) index + 1 else 1
         }
         .reduce { acc, value -> acc * value }
 }
