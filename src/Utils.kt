@@ -1,6 +1,7 @@
 import java.io.File
 import java.math.BigInteger
 import java.security.MessageDigest
+import kotlin.math.abs
 
 typealias Matrix = Array<IntArray>
 
@@ -18,6 +19,8 @@ fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteA
     .padStart(32, '0')
 
 operator fun IntRange.contains(other: IntRange): Boolean = first <= other.first && other.last <= last
+val IntRange.size
+    get() = abs(this.last - this.first) + 1
 
 data class XY(val x: Int, val y: Int)
 data class MutableXY(var x: Int, var y: Int) {
