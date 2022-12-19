@@ -12,8 +12,8 @@ fun main() {
 
     val input = readInput("Day15")
     val (sensors, beacons) = parseInput(input)
-    println(part1(sensors, beacons, targetLine = 2000000))
-    println(part2(sensors, bound = 4000000))
+    println(part1(sensors, beacons, targetLine = 2_000_000))
+    println(part2(sensors, bound = 4_000_000))
 }
 
 private fun part1(sensors: List<Sensor>, beacons: Set<XY>, targetLine: Int): Int {
@@ -36,12 +36,12 @@ private fun part2(sensors: List<Sensor>, bound: Int): Long {
 
         for (i in 1..intervals.lastIndex) {
             if (intervals[i].first - intervals[i - 1].last > 1) {
-                return (intervals[i - 1].last + 1) * 4000000L + y
+                return (intervals[i - 1].last + 1) * 4_000_000L + y
             }
         }
 
         if (intervals.last().last < bound) {
-            return (intervals.last().last + 1) * 4000000L + y
+            return (intervals.last().last + 1) * 4_000_000L + y
         }
     }
 

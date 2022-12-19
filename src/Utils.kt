@@ -4,6 +4,7 @@ import java.security.MessageDigest
 import kotlin.math.abs
 
 typealias Matrix = Array<IntArray>
+typealias Boolean3DMatrix = Array<Array<BooleanArray>>
 
 /**
  * Reads lines from the given input txt file.
