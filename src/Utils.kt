@@ -4,6 +4,7 @@ import java.security.MessageDigest
 import kotlin.math.abs
 
 typealias Matrix = Array<IntArray>
+typealias Int3DMatrix = Array<Array<IntArray>>
 typealias Boolean3DMatrix = Array<Array<BooleanArray>>
 
 /**
