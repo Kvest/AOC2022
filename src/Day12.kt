@@ -94,9 +94,3 @@ private fun List<String>.findAllChars(targets: Set<Char>): List<IJ> {
 
     return result
 }
-
-data class Item(val steps: Int, val ij: IJ) : Comparable<Item> {
-    override fun compareTo(other: Item): Int {
-        return this.steps - other.steps
-    }
-}

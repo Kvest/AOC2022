@@ -4,6 +4,7 @@ import java.security.MessageDigest
 import kotlin.math.abs
 
 typealias Matrix = Array<IntArray>
+typealias BooleanMatrix = Array<BooleanArray>
 typealias Int3DMatrix = Array<Array<IntArray>>
 typealias Boolean3DMatrix = Array<Array<BooleanArray>>
 
@@ -32,4 +33,12 @@ data class MutableXY(var x: Int, var y: Int) {
 data class IJ(val i: Int, val j: Int)
 data class MutableIJ(var i: Int, var j: Int) {
     fun toIJ() = IJ(i = i, j = j)
+}
+
+fun BooleanMatrix.deepCopyOf(): BooleanMatrix = Array(this.size) { i -> this[i].copyOf() }
+
+data class Item(val steps: Int, val ij: IJ) : Comparable<Item> {
+    override fun compareTo(other: Item): Int {
+        return this.steps - other.steps
+    }
 }
