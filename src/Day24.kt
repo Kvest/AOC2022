@@ -77,17 +77,17 @@ private fun solve(
     val queue = PriorityQueue<Item>()
     queue.offer(Item(startMinute, IJ(startI, startJ)))
 
-    val done = mutableSetOf<Int>()
+    val visited = mutableSetOf<Int>()
 
     while (queue.isNotEmpty()) {
         val (minute, ij) = queue.poll()
         val (i, j) = ij
 
         val key = minute * 1_000_000 + i * 1_000 + j
-        if (key in done) {
+        if (key in visited) {
             continue
         }
-        done.add(key)
+        visited.add(key)
 
 
         if (i == targetI && j == targetJ) {

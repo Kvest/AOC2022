@@ -1,6 +1,4 @@
 fun main() {
-    1747L.toSNAFU()
-
     val testInput = readInput("Day25_test")
     check(part1(testInput) == "2=-1=0")
 
