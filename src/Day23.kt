@@ -4,7 +4,7 @@ import kotlin.math.min
 fun main() {
     val testInput = readInput("Day23_test")
     check(part1(testInput) == 110)
-     check(part2(testInput) == 20)
+    check(part2(testInput) == 20)
 
     val input = readInput("Day23")
     println(part1(input))
@@ -59,10 +59,7 @@ private fun part1(input: List<String>): Int {
         counts.clear()
 
         elves.calculateMoves(iterationNumber, moveMap, counts)
-
-        elves = elves.map { elf ->
-            moveMap[elf]?.takeIf { counts[it] == 1 } ?: elf
-        }.toSet()
+        elves = elves.applyMoves(moveMap, counts)
     }
 
     var iFrom = elves.first().i
@@ -95,7 +92,7 @@ private fun part2(input: List<String>): Int {
 
     val moveMap = mutableMapOf<IJ, IJ>()
     val counts = mutableMapOf<IJ, Int>()
-    while(true) {
+    while (true) {
         moveMap.clear()
         counts.clear()
 
@@ -105,9 +102,7 @@ private fun part2(input: List<String>): Int {
             break
         }
 
-        elves = elves.map { elf ->
-            moveMap[elf]?.takeIf { counts[it] == 1 } ?: elf
-        }.toSet()
+        elves = elves.applyMoves(moveMap, counts)
 
         ++iterationNumber
     }
@@ -151,4 +146,13 @@ private fun Set<IJ>.calculateMoves(
             }
         }
     }
+}
+
+private fun Set<IJ>.applyMoves(
+    moveMap: MutableMap<IJ, IJ>,
+    counts: MutableMap<IJ, Int>
+): Set<IJ> {
+    return this.map { elf ->
+        moveMap[elf]?.takeIf { counts[it] == 1 } ?: elf
+    }.toSet()
 }
